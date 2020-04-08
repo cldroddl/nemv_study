@@ -10,3 +10,4 @@
   3.12.1
 * vue create frontend
 * vue add vuetify
+* yarn lint --fix
