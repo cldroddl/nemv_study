@@ -9,3 +9,4 @@
 * vue --version   
   3.12.1
 * vue create frontend
+* vue add vuetify
