@@ -11,3 +11,4 @@
 * vue create frontend
 * vue add vuetify
 * yarn lint --fix
+* yarn build
