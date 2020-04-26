@@ -34,12 +34,6 @@
     </v-app-bar>
 
     <v-content>
-      <v-row
-        align-center
-        justify-center
-      >
-        Baseline
-      </v-row>
       <v-container
         class="fill-height"
         fluid
@@ -52,13 +46,12 @@
             <v-tooltip left>
               <template v-slot:activator="{ on }">
                 <v-btn
-                  :to="{ name: '/' }"
+                  :to="'/'"
                   icon
                   large
-                  target="_blank"
                   v-on="on"
                 >
-                  <v-icon>home</v-icon>
+                  <v-icon large>Home</v-icon>
                 </v-btn>
               </template>
               <span>Home</span>
@@ -73,7 +66,7 @@
                   target="_blank"
                   v-on="on"
                 >
-                  <v-icon>help_outline</v-icon>
+                  <v-icon large>help_outline</v-icon>
                 </v-btn>
               </template>
               <span>About</span>
