@@ -5,7 +5,7 @@
       app
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item :to="'/'">
           <v-list-item-action>
             <v-icon>home</v-icon>
           </v-list-item-action>
@@ -13,12 +13,12 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item :to="{ name: 'about' }">
           <v-list-item-action>
-            <v-icon>contact_mail</v-icon>
+            <v-icon>help_outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>About</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -34,53 +34,7 @@
     </v-app-bar>
 
     <v-content>
-      <v-row
-        align-center
-        justify-center
-      >
-        Baseline
-      </v-row>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col class="text-center">
-            <v-tooltip left>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :to="{ name: '/' }"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon>home</v-icon>
-                </v-btn>
-              </template>
-              <span>Home</span>
-            </v-tooltip>
-
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  :to="'/about'"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon>help_outline</v-icon>
-                </v-btn>
-              </template>
-              <span>About</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
-      </v-container>
+      <router-view/>
     </v-content>
     <v-footer
       color="indigo"
