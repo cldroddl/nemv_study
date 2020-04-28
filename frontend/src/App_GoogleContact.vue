@@ -131,33 +131,35 @@
           align-center
           justify-center
         >
-          <v-tooltip right>
+          <v-tooltip left>
             <template v-slot:activator="{ on }">
               <v-btn
-                :to="this.$route.home"
+                :href="'/'"
                 icon
                 large
-                target="_blank"
                 v-on="on"
               >
-                <v-icon large>Home</v-icon>
+              <!-- href 대신 :to를 사용해서 하면 잘 되는데 아이콘 옆에 그림자가 생긴다. -->
+              <!-- :to="{name : 'home'}" -->
+              <!-- 하지만 href는 객체를 인식하지 못한다. -->
+              <!-- :href="{name: 'home'}"  X  -->
+                <v-icon large>home</v-icon>
               </v-btn>
             </template>
-            <span>Source</span>
+            <span>Home</span>
           </v-tooltip>
           <v-tooltip right>
             <template v-slot:activator="{ on }">
               <v-btn
                 icon
                 large
-                :to="this.$route.about"
-                target="_blank"
+                :href="'/about'"
                 v-on="on"
               >
-                <v-icon large>mdi-codepen</v-icon>
+                <v-icon large>help</v-icon>
               </v-btn>
             </template>
-            <span>Codepen</span>
+            <span>About</span>
           </v-tooltip>
         </v-layout>
       </v-container>

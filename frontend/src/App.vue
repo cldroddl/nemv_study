@@ -260,7 +260,7 @@ export default {
       { icon: 'help', text: 'Help' },
       { icon: 'phonelink', text: 'App downloads' },
       { icon: 'keyboard', text: 'Go to the old version' },
-      { icon: 'help_outline', text: 'About', to: { name: '/about' } }
+      { icon: 'help_outline', text: 'About', to: { name: 'about' } }
     ]
   })
 }
