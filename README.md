@@ -6,6 +6,7 @@
 * npm i express-generator -g
 * express --view=pug backend
 * yarn add connect-history-api-fallback
+* DEBUG=backend:* npm start
 * yarn global add @vue/cli@3.x
 * vue --version   
   3.12.1
