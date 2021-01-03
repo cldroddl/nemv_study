@@ -10,3 +10,5 @@
 # vue create frontend
 # cd frontend
 # vue add bootstrap-vue
+# vue에서 build해서 backend로 복사해주므로 DEBUG=backend:* yarn start 한 후
+# localhost:3000 으로 접속하면 frontend의 내용이 나와야 한다.
