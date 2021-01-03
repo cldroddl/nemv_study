@@ -3,6 +3,7 @@
 // vue-cli 3.x 버전부터 웹팩 설정은 webpack.config.js가 아닌 vue.config.js에 작성한다
 
 const path = require('path')
+// const webpack = require('webpack')
 
 module.exports = {
   // backend에서 웹페이지를 보여줄 경우 여기에서 backend쪽으로 output을 맞춰줘도 되고
@@ -39,7 +40,8 @@ module.exports = {
       //     new webpack.ProvidePlugin({
       //         $: 'jquery',
       //         jQuery: 'jquery',
-      //        'window.jQuery': 'jquery'
+      //        'window.jQuery': 'jquery',
+      //        jQuery: 'jquery'
       //     })
       // ]
   },
