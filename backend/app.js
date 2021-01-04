@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const history = require('connect-history-api-fallback')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
@@ -19,7 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // 모두 static 위에 있으면 / 등도 다 받아서 backend 에서 처리해 버리므로 static 에서 처리 전에
-app.use('/api', apiRouter);
+app.use('/api', apiRouter)
+app.use(history())
 app.use(express.static(path.join(__dirname, 'public')));
 
 // frontend의 static 리소스를 사용할 경우
