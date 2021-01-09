@@ -19,6 +19,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
+    path: '/flex',
+    name: 'Flex',
+    component: () => import('../views/Flex.vue')
+  },
+  {
     path: '*',
     name: 'e404',
     component: () => import('../views/e404')
