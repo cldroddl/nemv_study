@@ -24,6 +24,11 @@ const routes = [
     component: () => import('../views/Flex.vue')
   },
   {
+    path: '/lessMenu',
+    name: 'LessMenu',
+    component: () => import('../views/LessMenu.vue')
+  },
+  {
     path: '*',
     name: 'e404',
     component: () => import('../views/e404')

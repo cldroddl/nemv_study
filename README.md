@@ -20,3 +20,5 @@
 ### yarn connect-history-api-fallback
 ### frontend 에서 yarn build 후 localhost:3000/zxv 등이 e404.vue 로 잘 처리 되는직 확인
 ### backend 의 에러 처리 부분은 /api 등 정의된 url 로 갔지만 인자등 내부적인 다른 요인에 의한 에러를 처리 하는데 사용된다
+### sass 는 @vue/cli 3.x 의 템플릿으로 만들경우 기본으로 들어 있고 less 는 설치를 해 줘야 한다.
+### yarn add less less-loader --dev

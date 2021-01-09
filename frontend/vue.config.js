@@ -44,6 +44,17 @@ module.exports = {
     //        jQuery: 'jquery'
     //     })
     // ]
+    // module 부분은 less 파일일 경우 설정이 필요한듯
+    // module: {
+    //   rules: [
+    //     {
+    //       test: /\.less$/,
+    //       use: [
+    //         'less-loader'
+    //       ]
+    //     }
+    //   ]
+    // }
   },
   chainWebpack: config => {
     config
