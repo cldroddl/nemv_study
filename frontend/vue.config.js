@@ -30,12 +30,12 @@ module.exports = {
     // }
   },
   configureWebpack: {
-    //       resolve: {
-    //           alias: {
-    //               '@': path.join(__dirname, 'src/'),
-    // //                Ttemplates: path.resolve(__dirname, 'src/templates/')
-    //           }
-    //       },
+    resolve: {
+      alias: {
+        '@': path.join(__dirname, 'src/'), // Default
+        stylesPath: path.resolve(__dirname, 'src/assets/styles')
+      }
+    },
     // plugins: [
     //     new webpack.ProvidePlugin({
     //         $: 'jquery',
@@ -45,6 +45,9 @@ module.exports = {
     //     })
     // ]
     // module 부분은 less 파일일 경우 설정이 필요한듯
+    // less 파일의 경우 기본으로 설정되어 있으므로
+    // yarn add less less-loader --dev
+    // 로 설치만 해 주면 된다다
     // module: {
     //   rules: [
     //     {
