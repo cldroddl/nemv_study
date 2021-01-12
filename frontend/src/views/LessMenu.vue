@@ -84,13 +84,16 @@ export default {
 @import '~stylesPath/less/mixins';
 // less 는 @ 를 붙여 변수를 선언하고
 // sass 는 $ 를 붙여 변수를 선언한다.
-//@baseColor: #fff;
-body {
+// 여기서 * 는 이 페이지의 모든 요소를 의미한다.
+// 페이지 생성시 임의의 data- 속성을 제일 상위의 요소에 생성하고
+// 하위 모든 요소에서도 그 속성을 가지도록 생성되므로
+// 하위 모든 요소들을 의미할 수 있다.
+* {
   .Nanum;
   .BGC;
   .TC;
-  width: 960px;
-  margin: 10px auto;
+  //width: 960px;
+  //margin: 10px auto;
 }
 
 nav {
