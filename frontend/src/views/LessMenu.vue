@@ -80,7 +80,7 @@ export default {
 @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 //@import '/src/assets/styles/less/variables';  // 이것도 가능
 //@import '/src/assets/styles/less/mixins';     // 이것도 가능
-@import 'stylesPath/less/variables'; // ~ 없이도 정상 동작
+@import 'stylesPath/less/variables'; // ~ 없이도 정상 동작. css 파일 import 해 보니 없으니 정상동작 하지 않는다. 있어야 하는듯..근데 여긴 없어도 되네???
 @import '~stylesPath/less/mixins';
 // less 는 @ 를 붙여 변수를 선언하고
 // sass 는 $ 를 붙여 변수를 선언한다.

@@ -27,6 +27,7 @@ export default {
 <style lang="scss" scoped>
 // less 는 @ 를 붙여 변수를 선언하고
 // sass 는 $ 를 붙여 변수를 선언한다.
+@import "~stylesPath/css/reset.css";
 $background: #ff6b57;
 
 * {margin:0; padding:0;}
