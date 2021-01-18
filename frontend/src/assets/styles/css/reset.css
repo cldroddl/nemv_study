@@ -44,7 +44,7 @@ img{
 vertical-align:top;
 }
 
- table 태그 간격 없앰
+/*table 태그 간격 없앰*/
 table{
 border-collapse:collapse;
 border-spacing:0;
