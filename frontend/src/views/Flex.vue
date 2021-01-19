@@ -30,7 +30,7 @@ export default {
 @import "~stylesPath/scss/reset";
 $background: #ff6b57;
 
-* {margin:0; padding:0;}
+//* {margin:0; padding:0;}
 
 #wrap{
   display:flex;
