@@ -111,8 +111,8 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-@import "~stylesPath/css/reset.css";  /* css 는 확장자 빼니까 안되네 */
-@import "~stylesPath/css/flex_main.css";
+<style lang="scss" scoped>
+@import "~stylesPath/scss/reset.scss";  /* css 는 확장자 빼니까 안되네 */
+@import "~stylesPath/scss/flex_main.scss";
 
 </style>
