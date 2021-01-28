@@ -16,7 +16,7 @@
         <ul class="gnb">
           <li><a href="/">홈</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
           <li><a href="introudce.html">플랫 디자인이란?</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
-          <li><a href="gallery.html">갤러리</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
+          <li><a href="/flex2/gallery">갤러리</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
           <li><a href="board.html">문의사항</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
         </ul>
       </nav>

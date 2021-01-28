@@ -34,6 +34,11 @@ const routes = [
     component: () => import('../views/Flex2.vue')
   },
   {
+    path: '/flex2/gallery',
+    name: 'FlexGallery',
+    component: () => import('../views/FlexGallery.vue')
+  },
+  {
     path: '*',
     name: 'e404',
     component: () => import('../views/e404')

@@ -1,0 +1,95 @@
+<template>
+  <div id="wrap">
+    <section class="info_section">
+      <ul class="info_list">
+        <li><a href="/"><img src="@/assets/images/s_images/info_icon_01.png" alt=""></a></li>
+        <li><a href=""><img src="@/assets/images/s_images/info_icon_02.png" alt=""></a></li>
+        <li><a href=""><img src="@/assets/images/s_images/info_icon_03.png" alt=""></a></li>
+        <li><a href=""><img src="@/assets/images/s_images/info_icon_04.png" alt=""></a></li>
+      </ul>
+    </section>
+    <header class="header">
+      <h1 class="logo">
+        <a href="/flex2">flat<br>design</a>
+      </h1>
+      <nav class="nav">
+        <ul class="gnb">
+          <li><a href="/">홈</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
+          <li><a href="/flex2">Flex2</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
+          <li><a href="introudce.html">플랫 디자인이란?</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
+          <li><a href="gallery.html">갤러리</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
+          <li><a href="board.html">문의사항</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
+        </ul>
+      </nav>
+      <span class="menu_toggle_btn">전체 메뉴 토글 버튼</span>
+    </header>
+    <section class="sub_header_section">
+      <h2>갤러리</h2>
+      <ul class="breadcrum_list">
+        <li><a href="/flex2">Flex2</a></li>
+        <li><a href="gallery.html">갤러리</a></li>
+      </ul>
+    </section>
+    <section class="content_section">
+      <div class="content_row_1">
+        <ul class="gallery_list">
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_01.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_02.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_03.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_04.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_05.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_06.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_07.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_08.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_09.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_10.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_11.jpg" alt=""></a></li>
+          <li><a href=""><img src="@/assets/images/p_images/sub_gallery_12.jpg" alt=""></a></li>
+        </ul>
+      </div>
+      <div class="content_row_2">
+        <div class="search_box">
+          <form action="#" method="get">
+            <input type="search" name="gallery_search_window" class="search_window" placeholder="검색어">
+            <div class="search_select_box">
+              <span>검색 대상</span>
+              <ul class="search_select_list">
+                <li>제목</li>
+                <li>내용</li>
+                <li>제목+내용</li>
+                <li>댓글</li>
+                <li>이름</li>
+                <li>닉네임</li>
+                <li>아이디</li>
+                <li>태그</li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div class="write_box">
+          <a href="#">글 쓰기</a>
+        </div>
+      </div>
+      <div class="content_row_3">
+        <span class="list_prev_btn">갤러리 이전 버튼</span>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <span class="list_next_btn">갤러리 다음 버튼</span>
+      </div>
+    </section>
+    <footer class="footer">
+      <p>copyright&copy; 2014.flat design blog all rights reserved.</p>
+    </footer>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'FlexGallery'
+}
+</script>
+
+<style lang="css" scoped>
+@import "~stylesPath/css/flex_sub.css";
+</style>
