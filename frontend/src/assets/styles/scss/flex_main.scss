@@ -22,14 +22,14 @@
 
 /* 인포메이션 영역 CSS */
 .info_section {
-  order: 1;
+  order: 1; // 모바일 환경에서 배치 순서는 1
   width: 100%;
   background: #2ecc71;
   border-bottom: 1px solid #39d67c;
 }
 
 .info_list {
-  display: flex;
+  display: flex;  // 플렉서블 박스로 동작 하도록
 
   li {
     width: 25%;
@@ -37,7 +37,7 @@
 
     a {
       display: block;
-      padding: 15px 0;
+      padding: 15px 0;  // rem 단위를 지원하지 않는 하위 브라우져를 위한 fallback 기법으로 두번씩 정의해 준다.
       padding: 0.938rem 0;
     }
   }
@@ -47,8 +47,8 @@
 .header {
   display: flex;
   order: 2;
-  flex-direction: column;
-  position: relative;
+  flex-direction: column; // 모바일 환경에서는 헤더 영역의 로고와 메뉴 영역이 세로로 배치되기 때문에 박스의 배치 방향을 설정하는 flex-direction 속성의 값을 column 으로 설정
+  position: relative; // 토글 버튼이 놓일 기준을 설정하기 위해 position 속성의 값을 relative 로 설정하여 상대적인 위치로 만들어 주고 너비값은 100% 로 설정
   width: 100%;
 }
 
@@ -108,12 +108,12 @@
   width: 1.875rem;
   height: 30px;
   height: 1.875rem;
-  position: absolute;
+  position: absolute; // 모바일에서 전체 메뉴를 보이고 감추는 역할을 하는 토글 버튼은 오른쪽 상단에 배치
   top: 10px;
   top: 0.625rem;
   right: 10px;
   right: 0.625rem;
-  text-indent: -9999px;
+  text-indent: -9999px; // 글자를 안 보이도록
   background: url(~@/assets/images/s_images/menu_toggle_btn.png) no-repeat;
   cursor: pointer;
 }
@@ -261,8 +261,8 @@ span {
 
 .rankup_list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: wrap;  // 박스를 여러줄로 배치하기 위한 flex-wrap 속성의 값은 박스를 여러줄로 배치해 주는 wrap 로 설정
+  justify-content: space-between; // 목록 사잉에 간격을 두고 배치
 
   li {
     width: 47.916666666666666666666666666667%;
@@ -404,15 +404,15 @@ span {
 
   /* 헤더 영역 CSS */
   .header {
-    flex-direction: row;
+    flex-direction: row;  // 태블릿에서는 헤더 영역의 자식 박스들이 가로로 배치 되도록
   }
 
   .logo {
-    position: absolute;
+    position: absolute; // 태블릿에서는 로고 영역이 상단 왼쪽에 배치되도록
     top: 0;
     left: 0;
     z-index: 10;
-    width: 15.625%;
+    width: 15.625%; // 태블릿에서의 로그 너빗값 계산
     /* 120px ÷ 768px */
     padding: 0;
 
@@ -452,7 +452,7 @@ span {
   .slider_section {
     width: 59.89583333333333%;
     /* 460px ÷ 768px */
-    height: auto;
+    height: auto; // 너비나 높이를 지정할 필요 없이 자동으로 할때는 auto
 
     span {
       position: relative;
@@ -532,8 +532,8 @@ span {
 
   .banner_box_01 {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;  // 주축 방향으로 박스를 배치하는 justify-content 속성의 값을 박스를 중앙으로 배치하는 값인 center 로
+    align-items: center;      // 교차축 방향으로 박스를 배치하는 align-items 속성의 값을 박스를 중앙에 배치하는 값인 center 로
 
     a {
       display: inline;
@@ -721,7 +721,7 @@ span {
     li {
       width: auto;
       text-align: left;
-      counter-increment: rankup-counter;
+      counter-increment: rankup-counter;  // 카운터 명을 rankup-counter 로 설정
 
       &:nth-child(2) {
         margin-top: 15px;

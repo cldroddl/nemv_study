@@ -20,7 +20,7 @@
           <li><a href="board.html">문의사항</a><span class="sub_menu_toggle_btn">하위 메뉴 토글 버튼</span></li>
         </ul>
       </nav>
-      <span class="menu_toggle_btn">전체 메뉴 토글 버튼</span>
+      <span class="menu_toggle_btn">전체 메뉴 토글 버튼</span> <!-- text-intent 를 -9999px 로 설정하므로 보이진 않는다 -->
     </header>
     <section class="slider_section">
       <span class="prev_btn">이전 버튼</span><span class="next_btn">다음 버튼</span>
