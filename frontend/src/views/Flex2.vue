@@ -2,10 +2,10 @@
   <div id="wrap">
     <section class="info_section">
       <ul class="info_list">
-        <li><a href="index.html"><img src="@/assets/images/s_images/info_icon_01.png" alt=""></a></li>
-        <li><a href=""><img src="@/assets/images/s_images/info_icon_02.png" alt=""></a></li>
-        <li><a href=""><img src="@/assets/images/s_images/info_icon_03.png" alt=""></a></li>
-        <li><a href=""><img src="@/assets/images/s_images/info_icon_04.png" alt=""></a></li>
+        <li><a href="/"><img src="@/assets/images/s_images/info_icon_01.png" alt="홈"></a></li>
+        <li><a href=""><img src="@/assets/images/s_images/info_icon_02.png" alt="로그인"></a></li>
+        <li><a href=""><img src="@/assets/images/s_images/info_icon_03.png" alt="회원가입"></a></li>
+        <li><a href=""><img src="@/assets/images/s_images/info_icon_04.png" alt="검색"></a></li>
       </ul>
     </section>
     <header class="header">
@@ -25,6 +25,9 @@
     <section class="slider_section">
       <span class="prev_btn">이전 버튼</span><span class="next_btn">다음 버튼</span>
     </section>
+<!--    모바일 화면에서의 순서에 따라 슬라이더 영역 다음에 최근 글을 위치 시킨다.-->
+<!--    데스크탑의 최신 브라우져에서는 플렉서블 박스를 지원하므로 위치는 조정하면 된다.-->
+<!--    그래서 하위 브라우져 기준으로 배치 순서 결정한다.-->
     <section class="latest_post_section">
       <h2 class="title">최근 글</h2>
       <ul class="latest_post_list">
@@ -113,6 +116,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "~stylesPath/scss/reset.scss";  /* css 는 확장자 빼니까 안되네 */
-@import "~stylesPath/scss/flex_main.scss";
+@import "~stylesPath/scss/flex_main_mixin.scss";
 
 </style>
