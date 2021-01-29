@@ -116,6 +116,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "~stylesPath/scss/reset.scss";  /* css 는 확장자 빼니까 안되네 */
-@import "~stylesPath/scss/flex_main_mixin.scss";
+@import "~stylesPath/scss/flex_main.scss";
 
 </style>
