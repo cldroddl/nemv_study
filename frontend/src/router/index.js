@@ -39,6 +39,11 @@ const routes = [
     component: () => import('../views/FlexGallery.vue')
   },
   {
+    path: '/nemv',
+    name: 'nemv',
+    component: () => import('../views/nemv.vue')
+  },
+  {
     path: '*',
     name: 'e404',
     component: () => import('../views/e404')

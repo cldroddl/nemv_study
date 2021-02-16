@@ -48,6 +48,15 @@
           <a href="/flex2" class="btn btn-primary">Flex2</a>
         </div>
       </div>
+      <div class="card" style="width: 18rem;">
+        <!-- template 에서는 오히려 ~@ 이것은 먹히질 않고 @ 나 ../assets/ 로 해야 정상 동작하네 -->
+        <img src="@/assets/images/p_images/gallery_01.jpg" class="card-img-top" alt="Card Image">
+        <div class="card-body">
+          <h5 class="card-title">nemv</h5>
+          <p class="card-text">nemv study</p>
+          <a href="/nemv" class="btn btn-primary">nemv</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
