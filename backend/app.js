@@ -5,22 +5,23 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const history = require('connect-history-api-fallback')
 
-const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
-const apiRouter = require('./routes/api')
+// const apiRouter = require('./routes/api')
 
 const app = express();
 
+// view 는 사용하지 않고 api 서버로만 사용할 것이므로 삭제
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // 모두 static 위에 있으면 / 등도 다 받아서 backend 에서 처리해 버리므로 static 에서 처리 전에
-app.use('/api', apiRouter)
+// 이렇게 require 를 바로 적어줘도 된다.
+app.use('/api', require('./routes/api'))
+// app.use('/api', apiRouter)
 app.use(history())
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -31,8 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 여기서는 제목 설정등 여러가지 설정이 frontend에서 하는 것이 편할 것 같아
 // frontend에서 backend의 public 폴더로 복사해 주는 방식을 택한다.
 // catch 404 and forward to error handler
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
 app.use(function(req, res, next) {
 // 처리 필요가 있는 것들만 static 위에 넣어준다.
@@ -47,8 +48,11 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  // res.render 는 error.pug 파일을 html로 생성한다.
-  res.render('error');
+  /*
+   * res.send 는 응답을 json이나 문자열로 보내는 것인고
+   * res.render 는 pug 페이지를 그리는 것이다.
+   */
+  res.send({ status: err.status || 500, message: err.message });
 });
 
 module.exports = app;

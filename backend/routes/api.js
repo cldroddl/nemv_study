@@ -7,7 +7,7 @@ const router = express.Router();
  */
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('api response');
+  res.send('ap i response');
 });
 
 module.exports = router;
