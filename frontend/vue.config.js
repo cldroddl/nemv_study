@@ -35,7 +35,7 @@ module.exports = {
         '@': path.join(__dirname, 'src/'), // Default
         stylesPath: path.resolve(__dirname, 'src/assets/styles')
       }
-    },
+    }
     // plugins: [
     //     new webpack.ProvidePlugin({
     //         $: 'jquery',
