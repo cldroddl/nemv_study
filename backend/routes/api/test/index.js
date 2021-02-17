@@ -7,8 +7,18 @@ const createError = require('http-errors')
  * res.render 는 pug 페이지를 그리는 것이다.
  */
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('test response');
+router.get('/', function(req, res) {
+  const testData = [
+    {
+      name: '김김김',
+      age: 14
+    },
+    {
+      name: '이이이',
+      age: 24
+    }
+  ]
+  res.send({ testData: testData })
 });
 
 // get 뿐만이 아니라 모든 요청 verb 에 대해서 처리
