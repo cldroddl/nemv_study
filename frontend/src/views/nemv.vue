@@ -44,7 +44,9 @@ export default {
     // backend 에 cors 를 사용한다.
     axios.get('http://localhost:3000/api/test')
       .then((res) => {
-        this.testData = JSON.stringify(res)
+        // 실제 데이터는 res.data 에 들어 있다.
+        // this.testData = JSON.stringify(res)
+        this.testData = JSON.stringify(res.data)
       })
       .catch((err) => {
         this.testData = err.message
