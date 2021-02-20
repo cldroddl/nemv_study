@@ -1,0 +1,109 @@
+* {
+  margin:0;
+  padding:0;
+}
+.Nanum {
+  font-family:"Nanum Gothic", Arial, sans-serif;
+}
+.BGC {
+  background-color: @bgcolor;
+}
+.TC {
+  color: @textColor;
+}
+
+.BR(@radius:5px) {
+  border-radius:@radius;
+}
+
+.Border(@width:1px, @color:#ccc) {
+  border:@width solid @color;
+}
+
+.BW-gradient(@color: #F5F5F5, @start: 0, @stop: 255) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, rgb(@start,@start,@start)),
+                               color-stop(1, rgb(@stop,@stop,@stop)));
+  background: -ms-linear-gradient(bottom,
+                                  rgb(@start,@start,@start) 0%,
+                                  rgb(@stop,@stop,@stop) 100%);
+  background: -moz-linear-gradient(center bottom,
+                                   rgb(@start,@start,@start) 0%,
+                                   rgb(@stop,@stop,@stop) 100%);
+  background: -o-linear-gradient(rgb(@stop,@stop,@stop),
+                                 rgb(@start,@start,@start));
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",rgb(@stop,@stop,@stop),rgb(@start,@start,@start)));
+}
+
+.TextShadow (@string:1px 1px 1px rgba(0, 0, 0, 0.25)) {
+  text-shadow: @string;
+}
+
+.message-color(info) {
+  background: @Color;
+}
+
+.message-color(error) {
+  background: @Color-Spin-2-l;
+}
+
+.message-color(warning) {
+  background: @Color-Spin-3-l;
+}
+
+.message-color(@_) {
+  padding:7px;
+  margin:10px;
+  .BR(5px);
+}
+
+@message: info;
+.box-bg2 {
+  .message-color(@message);
+}
+
+.message-color(success, @Color) {
+  background: @Color;
+}
+
+.message-color(@_,@_) {
+  padding:7px;
+  margin:10px;
+  .BR(5px);
+}
+
+.box-bg2 {
+  .message-color(success, green);
+}
+
+.message-color(success, @Color) {
+  background: @Color-Spin-3-d;
+}
+.box-bg2 {
+  .message-color(success, green);
+}
+
+
+.someText(@textColor2) when (lightness(@textColor2) < 50%) {
+  .BW-gradient(#dddddd, 200, 255);
+  color:@textColor2;
+  .Border(5px, #555)
+}
+
+.someText(@textColor2) when (lightness(@textColor2) >= 50%) {
+  .BW-gradient(#555555, 20, 90);
+  color:@textColor2;
+  .Border(5px, #ccc)
+}
+
+.someText(@_) {
+  .BR(10px);
+  padding:10px;
+}
+
+#gradient-bg {
+  .someText(#ddd)
+}
