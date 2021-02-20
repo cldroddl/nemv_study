@@ -5,8 +5,19 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const history = require('connect-history-api-fallback')
 const cors = require('cors')
+const mongoose = require('mongoose')
+const cfg = require('./config/config')  // 설정파일
 
 // const apiRouter = require('./routes/api')
+if (!cfg) {
+  console.error('error: no config file')
+  process.exit(1)
+}
+
+mongoose.connect(cfg.db.url, { useNewUrlParser: true }, (err) => {
+  if (err) return console.error(err)
+  console.log('mongoose connected!')
+})
 
 const app = express();
 

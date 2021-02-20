@@ -2,6 +2,17 @@ const express = require('express');
 const router = express.Router();
 const createError = require('http-errors')
 
+// '*' 을 제일 아래에 두고 나머지 요청에 대해서만 처리할 필요는 없다.
+// 아래처럼 제일 위에 두고 미드웨어로 활용할 수도 있다.
+router.all('*', (req, res, next) => {
+  console.log('path: ' + req.path)
+  console.log('param: ' + req.params)
+  // 미들웨어 처리
+  // ...
+  // 미들웨어 처리후 다른 처리를 해 줘야 하므로 next() 호출
+  next()
+})
+
 router.use('/test', require('./test'))
 /*
  * res.send 는 응답을 json이나 문자열로 보내는 것인고
@@ -13,7 +24,7 @@ router.get('/hello', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  res.send('ap i response');
+  res.send('api response');
 });
 
 // get 뿐만이 아니라 모든 요청 verb 에 대해서 처리
