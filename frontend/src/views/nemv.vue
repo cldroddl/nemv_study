@@ -210,7 +210,7 @@ export default {
   },
   methods: {
     sendGet () {
-      axios.get('/api/test/req', {
+      axios.get('http://localhost:3000/api/company', {
         user: 'getTest'
       })
         .then((res) => {
@@ -221,7 +221,7 @@ export default {
         })
     },
     sendPut () {
-      axios.put('http://localhost:3000/api/test/req', {
+      axios.put('http://localhost:3000/api/company', {
         user: 'putTest'
       })
         .then((res) => {
@@ -232,7 +232,7 @@ export default {
         })
     },
     sendPost () {
-      axios.post('http://localhost:3000/api/test/req', {
+      axios.post('http://localhost:3000/api/company', {
         user: 'postTest'
       })
         .then((res) => {
@@ -243,7 +243,7 @@ export default {
         })
     },
     sendDelete () {
-      axios.delete('http://localhost:3000/api/test/req', {
+      axios.delete('http://localhost:3000/api/company', {
         user: 'delTest'
       })
         .then((res) => {

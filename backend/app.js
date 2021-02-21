@@ -23,6 +23,11 @@ mongoose.connect(cfg.db.url, { useNewUrlParser: true }, (err) => {
 
 const app = express();
 
+// /api 위에서 cors 를 사용하겠다고 선언
+// cors 를 사용하면 다른 서버에서 요청해도 데이터를 보내줄 수 있다.
+// app.use(require('cors')())
+if (cfg.web.cors) app.use(cors())
+
 // view 는 사용하지 않고 api 서버로만 사용할 것이므로 삭제
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
@@ -32,9 +37,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// /api 위에서 cors 를 사용하겠다고 선언
-// cors 를 사용하면 다른 서버에서 요청해도 데이터를 보내줄 수 있다.
-app.use(cors())
 // 모두 static 위에 있으면 / 등도 다 받아서 backend 에서 처리해 버리므로 static 에서 처리 전에
 // 이렇게 require 를 바로 적어줘도 된다.
 app.use('/api', require('./routes/api'))

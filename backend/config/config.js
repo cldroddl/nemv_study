@@ -3,5 +3,8 @@ module.exports = {
   db: {
     url: 'mongodb://localhost:27017/nemv',  // 제일 끝은 db 명
     // url: 'mongodb://계정:비밀번호@cluster0-xxx.mongodb.net:27017,cluster0-xxx.mongodb.net:27017,cluster0-xxx.mongodb.net:27017/nembv?ssl=true&replicaSet=Cluster0-xxx&authSource=admin',
+  },
+  web: {
+    cors: true, // 개발용
   }
 }
