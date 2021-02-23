@@ -32,6 +32,8 @@
                          :rows="3"
                          :max-rows="6">
         </b-form-textarea>
+        <b-form-input v-model="txtPostCompanyName" class="mb-3" type="text" placeholder="회사명"></b-form-input>
+        <b-form-input v-model="txtPostRemark" class="mb-3" type="text" placeholder="비고"></b-form-input>
         <b-button @click="sendPost"
                   variant="primary">전송</b-button>
         <b-card-text class="small text-muted">Last updated 3 mins ago</b-card-text>
@@ -189,7 +191,9 @@ export default {
       resultsOfGet: '',
       resultsOfPost: '',
       resultsOfPut: '',
-      resultsOfDel: ''
+      resultsOfDel: '',
+      txtPostCompanyName: '',
+      txtPostRemark: ''
     }
   },
   mounted () {
@@ -210,7 +214,7 @@ export default {
   },
   methods: {
     sendGet () {
-      axios.get('http://localhost:3000/api/company', {
+      axios.get('http://localhost:3000/api/companies', {
         user: 'getTest'
       })
         .then((res) => {
@@ -221,7 +225,7 @@ export default {
         })
     },
     sendPut () {
-      axios.put('http://localhost:3000/api/company', {
+      axios.put('http://localhost:3000/api/companies', {
         user: 'putTest'
       })
         .then((res) => {
@@ -232,9 +236,12 @@ export default {
         })
     },
     sendPost () {
-      axios.post('http://localhost:3000/api/company', {
-        user: 'postTest'
-      })
+      const company = {
+        name: this.txtPostCompanyName,
+        remark: this.txtPostRemark
+      }
+      console.log(company)
+      axios.post('http://localhost:3000/api/companies', company)
         .then((res) => {
           this.resultsOfPost = JSON.stringify(res.data)
         })
@@ -243,7 +250,7 @@ export default {
         })
     },
     sendDelete () {
-      axios.delete('http://localhost:3000/api/company', {
+      axios.delete('http://localhost:3000/api/companies', {
         user: 'delTest'
       })
         .then((res) => {

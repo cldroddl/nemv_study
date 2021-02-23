@@ -51,6 +51,10 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  // 기본은 해시태그 다음을 라우팅 한다.
+  // localhost:8080/test 라면 localhost:8080/test#/ 으로 바뀌어서 / 페이지로 이동한다.
+  // /test 로 이동하려면 localhost:8080/#/test 로 해야 한다.
+  // localhost:8080/test 일때 정상동작 하게 하려면 mode 를 history 로 변경해 줘야 한다.
   mode: 'history',
   base: process.env.BASE_URL,
   routes
