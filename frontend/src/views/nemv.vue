@@ -1,5 +1,10 @@
 <template>
   <div id="wrap">
+    <b-row>
+      <b-col>
+        <b-btn variant="info" @click="goToNemvPage">완성페이지</b-btn>
+      </b-col>
+    </b-row>
     <b-card-group deck class="m-3">
       <b-card
         header="GET Header"
@@ -259,6 +264,9 @@ export default {
         .catch((e) => {
           this.resultsOfDel = e.message
         })
+    },
+    goToNemvPage () {
+      this.$router.push('/nemv/exam')
     }
   }
 }

@@ -42,6 +42,23 @@ const routes = [
     path: '/nemv',
     name: 'nemv',
     component: () => import('../views/nemv.vue')
+    // 중첩된 라우터는 그 페이지 안에서 일정 부분이 변하는 것만 담당한다.
+    // 그래서 화면 전체가 nemvExam 으로 전환되어야 하는 경우에는 불가능.
+    // 이럴때는 중첩된 경로가 아니고 따로 만들어 줘야 한다.
+    // children: [
+    //   {
+    //     /nemv/exam
+    // path: 'exam',
+    // component: () => import('../views/nemvExam.vue')
+    // }
+    // ]
+  },
+  {
+    // 경로상 보면 중첩 되지만 상위 vue 의 내부만 변하는 것이 아니라면
+    // children 으로 중첩된 라우터로 하는 것이 아니라
+    // 이렇게 따로 빼야 한다.
+    path: '/nemv/exam',
+    component: () => import('../views/nemvExam.vue')
   },
   {
     path: '*',

@@ -17,8 +17,8 @@ if (!cfg) {
 mongoose.connect(cfg.db.url, { useNewUrlParser: true }, (err) => {
   if (err) return console.error(err)
   console.log('mongoose connected!')
-  const pg = require('./playGround')
-  pg.test.model();
+  // const pg = require('./playGround')
+  // pg.test.model();
 })
 
 const app = express();
