@@ -22,3 +22,10 @@
 ### backend 의 에러 처리 부분은 /api 등 정의된 url 로 갔지만 인자등 내부적인 다른 요인에 의한 에러를 처리 하는데 사용된다
 ### sass 는 @vue/cli 3.x 의 템플릿으로 만들경우 기본으로 들어 있고 less 는 설치를 해 줘야 한다.
 ### yarn add less less-loader --dev
+### frontend 완성할 때
+### 패키지 확인은 yarn list --pattern package-name
+### yarn add moment
+### yarn add sweetalert (sweetalert2도 있지만 다른 곳에서 만든듯)
+### yarn add vue-awesome (Awesome SVG icon component for Vue.js, with built-in Font Awesome icons.)
+### yarn add vue2-google-maps
+### yarn add fontawesome-markers

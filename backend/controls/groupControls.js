@@ -58,7 +58,7 @@ exports.add = (req, res) => {
       const f = { _id: r.company_id };
       // $addToSet 으로 추가된 아이디를 넣는다.
       // $addToSet 은 중복된 것은 넣지 않기 때문에 $push 보다 유용하다.
-      const s = { $addToSet: { gr_ids: r._id }};
+      const s = { $addToSet: { group_ids: r._id }};
       return Company.updateOne(f, s);
     })
     .then((r) => {
@@ -96,7 +96,7 @@ exports.del = (req, res) => {
       if (!r) throw new Error('group not exists');
       const f = { _id: r.company_id };
       // $pull로 아이디를 제거한다.
-      const s = { $pull: { gr_ids: r._id }};
+      const s = { $pull: { group_ids: r._id }};
       return Company.updateOne(f, s);
     })
     .then(() => { // { n: 1, nModified: 1, ok: 1 }

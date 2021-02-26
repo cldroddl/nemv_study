@@ -11,6 +11,7 @@ exports.list = (req, res) => {
   // 페이징 고려
   // draw: 추후 보안+IE에서 같은 요청 오작동 문제 때문에 추가. 1씩 증가하여 요청
   let { draw, keyword, offset, limit, order, sort } = req.query
+  console.log('aaa')
 
   if (draw === undefined) return res.send({success: false, msg: 'param error draw'})
   if (keyword === undefined) return res.send({success: false, msg: 'param error keyword'})

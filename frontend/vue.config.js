@@ -6,10 +6,13 @@ const path = require('path')
 // const webpack = require('webpack')
 
 module.exports = {
-  // backend에서 웹페이지를 보여줄 경우 여기에서 backend쪽으로 output을 맞춰줘도 되고
-  // backend에서 app.use(express.static(path.join(__dirname, 'frontend', 'dist')))
+  // transpileDependencies: [
+  //   /\bvue-awesome\b/
+  // ],
+  // backend 에서 웹페이지를 보여줄 경우 여기에서 backend 쪽으로 output 을 맞춰줘도 되고
+  // backend 에서 app.use(express.static(path.join(__dirname, 'frontend', 'dist')))
   // 로 frontend 의 경로를 static 리소스 폴더로 지정해 줘도 된다.
-  // 둘다 복사는 yarn build일때만 복사가 된다.
+  // 둘다 복사는 yarn build 일때만 복사가 된다.
   outputDir: path.resolve(__dirname, '../backend/public'),
   devServer: {
     // 개발시 vue 와 spring 서버를 따로 돌릴때 필요하다.
