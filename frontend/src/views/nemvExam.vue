@@ -66,7 +66,7 @@
 
         <b-card-footer>
           <p>
-            <small class="text-muted">{{ ago(v.ut) }}</small>
+            <small class="text-muted">{{ ago(v.update_at) }}</small>
             <b-button-group class="float-right">
               <b-btn variant="outline-warning" @click="modalOpen(v)"><v-icon name="pen"></v-icon></b-btn>
               <b-btn variant="outline-danger" @click="del(v)"><v-icon name="trash"></v-icon></b-btn>
@@ -214,9 +214,11 @@ export default {
       this.md.set = v
       this.$refs.mdRef.show()
     },
+    // 몇분전
     ago (t) {
       return this.$moment(t).fromNow()
     },
+    // 모달 지도에서 onClick 이벤트로 넘어온 좌표
     mdSetPos (m) {
       this.md.set.pos = m.latLng
     },
