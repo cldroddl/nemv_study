@@ -4,6 +4,9 @@
       <b-col>
         <b-btn variant="info" @click="goToNemvPage">완성페이지</b-btn>
       </b-col>
+      <b-col>
+        <b-btn variant="primary" @click="goToNemvBoard">게시판</b-btn>
+      </b-col>
     </b-row>
     <b-card-group deck class="m-3">
       <b-card
@@ -267,6 +270,9 @@ export default {
     },
     goToNemvPage () {
       this.$router.push('/nemv/exam')
+    },
+    goToNemvBoard () {
+      this.$router.push('/nemv/board')
     }
   }
 }

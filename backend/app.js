@@ -14,7 +14,14 @@ if (!cfg) {
   process.exit(1)
 }
 
-mongoose.connect(cfg.db.url, { useNewUrlParser: true }, (err) => {
+// DeprecationWarning 전역 설정
+// mongoose.set('useFindAndModify', false)
+// mongoose.set('useCreateIndex', true)
+// mongoose.set('useNewUrlParser', true)
+// mongoose.set('useUnifiedTopology', true)
+// mongoose.connect(cfg.db.url, (err) => {
+// DeprecationWarning 지역 설정
+mongoose.connect(cfg.db.url, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
   if (err) return console.error(err)
   console.log('mongoose connected!')
   // const pg = require('./playGround')
@@ -74,4 +81,4 @@ app.use(function(err, req, res, next) {
   res.send({ status: err.status || 500, message: err.message });
 });
 
-module.exports = app;
+module.exports = app

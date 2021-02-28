@@ -61,6 +61,11 @@ const routes = [
     component: () => import('../views/nemvExam.vue')
   },
   {
+    // 게시판 추가
+    path: '/nemv/board',
+    component: () => import('../views/nemvBoard.vue')
+  },
+  {
     path: '*',
     name: 'e404',
     component: () => import('../views/e404')

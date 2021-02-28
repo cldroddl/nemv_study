@@ -17,6 +17,7 @@ router.all('*', (req, res, next) => {
 router.use('/test', require('./test'))
 router.use('/companies', require('./companies'))
 router.use('/groups', require('./groups'))
+router.use('/board', require('./board'))
 
 /*
  * res.send 는 응답을 json이나 문자열로 보내는 것인고
