@@ -6,6 +6,14 @@
       </b-col>
       <b-col>
         <b-btn variant="primary" @click="goToNemvBoard">게시판</b-btn>
+        <b-row>
+          <b-col>
+            <b-btn variant="info" @click="goToTalkBoard">Talk</b-btn>
+          </b-col>
+          <b-col>
+            <b-btn variant="secondary" @click="goToQnABoard">QnA</b-btn>
+          </b-col>
+        </b-row>
       </b-col>
     </b-row>
     <b-card-group deck class="m-3">
@@ -273,6 +281,12 @@ export default {
     },
     goToNemvBoard () {
       this.$router.push('/nemv/board')
+    },
+    goToTalkBoard () {
+      this.$router.push('/nemv/board/talk')
+    },
+    goToQnABoard () {
+      this.$router.push('/nemv/board/qna')
     }
   }
 }

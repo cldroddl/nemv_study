@@ -66,6 +66,16 @@ const routes = [
     component: () => import('../views/nemvBoard.vue')
   },
   {
+    // Talk
+    path: '/nemv/board/talk',
+    component: () => import('../views/board/talk')
+  },
+  {
+    // QnA
+    path: '/nemv/board/qna',
+    component: () => import('../views/board/qna')
+  },
+  {
     path: '*',
     name: 'e404',
     component: () => import('../views/e404')

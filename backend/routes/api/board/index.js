@@ -1,6 +1,11 @@
 const router = require('express').Router();
-const ctrl = require('./ctrls')
 
+const talk = require('./talk');
+const qna = require('./qna');
+router.use('/talk', talk);
+router.use('/qna', qna);
+
+const ctrl = require('./ctrls')
 // 게시물들 리스트
 router.get('/', ctrl.list)
 // 특정 게시물 가져오기
