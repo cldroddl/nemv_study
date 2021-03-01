@@ -67,7 +67,7 @@
           </b-card-body>
           <!-- comment 관련 [[ -->
           <b-list-group flush>
-            <b-list-group-item v-for="(cmt) in row.item.commentIds" :key="cmt._id">
+            <b-list-group-item v-for="(cmt, ci) in row.item.commentIds" :key="cmt._id">
               <b-row>
                 <b-col cols="2">
                   <b-badge>{{ cmt.id }}</b-badge>
@@ -80,8 +80,8 @@
                 </b-col>
                 <b-col cols="2">
                   <b-button-group class="float-right" size="sm">
-                    <b-btn variant="outline-warning" @click="modifyCommentModalOpen(cmt)"><v-icon name="pen"></v-icon></b-btn>
-                    <b-btn variant="outline-danger" @click="deleteComment(cmt)"><v-icon name="trash"></v-icon></b-btn>
+                    <b-btn variant="outline-warning" @click="modifyCommentModalOpen(row.item, cmt)"><v-icon name="pen"></v-icon></b-btn>
+                    <b-btn variant="outline-danger" @click="deleteComment(row.item, cmt, ci)"><v-icon name="trash"></v-icon></b-btn>
                   </b-button-group>
                 </b-col>
               </b-row>
@@ -205,7 +205,7 @@
     <!-- comments 관련 [[ -->
     <b-modal ref="mdAddCmt" hide-footer title="댓글 작성">
       <b-form @submit="addComment">
-        <b-form-group label="이름:"
+        <b-form-group label="이름"
                       label-for="f-a-c-id">
           <b-form-input id="f-a-c-cid"
                         type="text"
@@ -231,7 +231,7 @@
 
     <b-modal ref="mdModCmt" hide-footer title="댓글 수정하기">
       <b-form @submit="modifyComment">
-        <b-form-group label="이름:"
+        <b-form-group label="이름"
                       label-for="comment-id">
           <b-form-input id="comment-id"
                         type="text"
@@ -332,7 +332,9 @@ export default {
         _id: '',
         id: '',
         contents: ''
-      }
+      },
+      row: {},
+      rowComment: {}
     }
   },
   // props: ['items'],
@@ -381,25 +383,29 @@ export default {
       this.form.contents = ''
       this.$refs.mdAdd.show()
     },
-    modifyBoardModalOpen (v) {
-      this.form._id = v._id
-      this.form.id = v.id
-      this.form.title = v.title
-      this.form.contents = v.contents
+    modifyBoardModalOpen (r) {
+      this.form._id = r._id
+      this.form.id = r.id
+      this.form.title = r.title
+      this.form.contents = r.contents
+      this.row = r
       this.$refs.mdMod.show()
     },
-    addCommentModalOpen (v) {
-      this.formComment.boardId = v._id
+    addCommentModalOpen (r) {
+      this.formComment.boardId = r._id
       this.formComment._id = ''
       this.formComment.id = ''
       this.formComment.contents = ''
+      this.row = r
       this.$refs.mdAddCmt.show()
     },
-    modifyCommentModalOpen (v) {
-      this.formComment.boardId = v._id
-      this.formComment._id = v._id
-      this.formComment.id = v.id
-      this.formComment.contents = v.contents
+    modifyCommentModalOpen (r, c) {
+      this.formComment.boardId = r._id
+      this.formComment._id = c._id
+      this.formComment.id = c.id
+      this.formComment.contents = c.contents
+      this.row = r
+      this.rowComment = c
       this.$refs.mdModCmt.show()
     },
     ago (t) {
@@ -416,12 +422,9 @@ export default {
       this.$refs.table.refresh()
     },
     sortingChanged (ctx) {
-      this.sortBy = ctx.sortBy
-      this.sortDesc = ctx.sortDesc
-      // if (ctx.sortDesc) this.s.order = -1;
-      // else this.s.order = 1;
-      this.list()
-      // console.log(ctx);
+      // this.sortBy = ctx.sortBy
+      // this.sortDesc = ctx.sortDesc
+      // this.list()
     },
     // list(ctx): table 프로바이더로 등록되어 있을 경우 ctx 에 현재 행위에 대한 값이 내려온다. 수신부 프라미스를 리턴하면 된다.
     list (ctx) {
@@ -509,8 +512,11 @@ export default {
         })
         .then(() => {
           this.$refs.mdMod.hide()
-          this.refresh()
-          // this.list(); // todo: instead one article..
+          // this.refresh()
+          // // this.list(); // todo: instead one article..
+          this.row.id = this.form.id
+          this.row.title = this.form.title
+          this.row.contents = this.form.contents
         })
         .catch((err) => {
           if (err.message) return this.swalError(err.message)
@@ -554,11 +560,12 @@ export default {
       this.$axios.post('http://localhost:3000/api/board/talk/comment', this.formComment)
         .then((res) => {
           if (!res.data.success) throw new Error(res.data.msg)
+          this.row.commentIds.push(res.data.d)
           return this.swalSuccess('댓글 추가 완료')
         })
         .then(() => {
           this.$refs.mdAddCmt.hide()
-          this.refresh()
+          // this.refresh()
         })
         .catch((err) => {
           this.swalError(err.message)
@@ -588,14 +595,17 @@ export default {
         })
         .then(() => {
           this.$refs.mdModCmt.hide()
-          this.refresh()
+          // this.refresh()
+          this.rowComment.id = this.formComment.id
+          this.rowComment.contents = this.formComment.contents
+          this.rowComment.updateAt = new Date()
         })
         .catch((err) => {
           if (err.message) this.swalError(err.message)
           else this.swalWarning('댓글 수정 취소')
         })
     },
-    deleteComment (cmt) {
+    deleteComment (r, cmt, i) {
       this.$swal({
         title: '댓글 삭제',
         dangerMode: true,
@@ -620,7 +630,8 @@ export default {
           return this.swalSuccess('댓글 삭제 완료')
         })
         .then(() => {
-          this.refresh()
+          // this.refresh()
+          r.commentIds.splice(i, 1)
         })
         .catch((err) => {
           if (err.message) return this.swalError(err.message)

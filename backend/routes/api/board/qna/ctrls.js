@@ -147,6 +147,7 @@ exports.addCmt = (req, res) => {
     contents: contents,
     ip: req.ip,
   });
+  // 부드러운 화면 위해
   let cr;
   cmt.save()
     .then((r) => {

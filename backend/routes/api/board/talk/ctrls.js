@@ -150,7 +150,7 @@ exports.addCmt = (req, res) => {
   let cr;
   cmt.save()
     .then((r) => {
-      cr = r;
+      cr = r  // add
       const f = { _id: r.boardId };
       const s = { $addToSet: { commentIds: r._id } };
       return Talk.updateOne(f, s);
@@ -174,6 +174,7 @@ exports.modCmt = (req, res) => {
 
   const f = { _id: set._id };
   const s = { $set: set };
+  // 부드러운 화면 위해
   const o = { new: true };
 
   TalkComment.findOneAndUpdate(f, s, o)
