@@ -65,10 +65,41 @@
           <b-card-body>
             <p class="card-text" style="white-space: pre;">{{row.item.contents}}</p>
           </b-card-body>
+          <!-- comment 관련 [[ -->
+          <b-list-group flush>
+            <b-list-group-item v-for="(cmt) in row.item.commentIds" :key="cmt._id">
+              <b-row>
+                <b-col cols="2">
+                  <b-badge>{{ cmt.id }}</b-badge>
+                </b-col>
+                <b-col cols="6">
+                  <span style="white-space: pre;">  {{ cmt.contents}}</span>
+                </b-col>
+                <b-col cols="2">
+                  <small class="text-muted"> {{ cmt.ip }} | {{ ago(cmt.updateAt) }}</small>
+                </b-col>
+                <b-col cols="2">
+                  <b-button-group class="float-right" size="sm">
+                    <b-btn variant="outline-warning" @click="modifyCommentModalOpen(cmt)"><v-icon name="pen"></v-icon></b-btn>
+                    <b-btn variant="outline-danger" @click="deleteComment(cmt)"><v-icon name="trash"></v-icon></b-btn>
+                  </b-button-group>
+                </b-col>
+              </b-row>
+
+            </b-list-group-item>
+            <b-list-group-item>
+              <span> 새 댓글 작성 </span>
+              <b-button-group class="float-right" size="sm">
+                <b-btn variant="outline-success" @click="addCommentModalOpen(row.item)"><v-icon name="plus"></v-icon></b-btn>
+              </b-button-group>
+            </b-list-group-item>
+
+          </b-list-group>
+          <!-- comment 관련 ]] -->
           <b-card-footer>
             <small class="text-muted">{{ ago (row.item.updateAt) }}</small>
             <b-button-group class="float-right">
-              <b-btn variant="outline-warning" @click="mdModOpen(row.item)"><v-icon name="pen"></v-icon></b-btn>
+              <b-btn variant="outline-warning" @click="modifyBoardModalOpen(row.item)"><v-icon name="pen"></v-icon></b-btn>
               <b-btn variant="outline-danger" @click="del(row.item)"><v-icon name="trash"></v-icon></b-btn>
             </b-button-group>
           </b-card-footer>
@@ -80,7 +111,7 @@
     <b-row>
       <b-col>
         <b-btn variant="info" @click="refresh">새로고침</b-btn>
-        <b-btn variant="success" @click="mdAddOpen" >글쓰기</b-btn>
+        <b-btn variant="success" @click="addBoardModalOpen" >글쓰기</b-btn>
       </b-col>
       <b-col>
         <!-- b-pagination: b-table 과 변수를 같이 쓰기 때문에 데이터 동기화 또한 같이 된다. -->
@@ -98,8 +129,8 @@
     <b-modal ref="mdAdd" hide-footer title="새로운 글 작성">
       <b-form @submit="add">
         <b-form-group label="이름:"
-                      label-for="fid">
-          <b-form-input id="fid"
+                      label-for="board-id">
+          <b-form-input id="board-id"
                         type="text"
                         v-model="form.id"
                         required
@@ -108,8 +139,8 @@
         </b-form-group>
 
         <b-form-group label="제목:"
-                      label-for="ftitle">
-          <b-form-input id="ftitle"
+                      label-for="board-title">
+          <b-form-input id="board-title"
                         type="text"
                         v-model="form.title"
                         required
@@ -118,8 +149,8 @@
         </b-form-group>
 
         <b-form-group label="글"
-                      label-for="fcontents">
-          <b-form-textarea id="fcontents"
+                      label-for="board-contents">
+          <b-form-textarea id="board-contents"
                            v-model="form.contents"
                            placeholder="재미있는 글"
                            :rows="10"
@@ -134,8 +165,8 @@
     <b-modal ref="mdMod" hide-footer title="글 수정하기">
       <b-form @submit="mod">
         <b-form-group label="이름:"
-                      label-for="fid">
-          <b-form-input id="fid"
+                      label-for="board-id">
+          <b-form-input id="board-id"
                         type="text"
                         v-model="form.id"
                         required
@@ -144,8 +175,8 @@
         </b-form-group>
 
         <b-form-group label="제목:"
-                      label-for="ftitle">
-          <b-form-input id="ftitle"
+                      label-for="board-title">
+          <b-form-input id="board-title"
                         type="text"
                         v-model="form.title"
                         required
@@ -154,8 +185,8 @@
         </b-form-group>
 
         <b-form-group label="글"
-                      label-for="fcontents">
-          <b-form-textarea id="fcontents"
+                      label-for="board-contents">
+          <b-form-textarea id="board-contents"
                            v-model="form.contents"
                            placeholder="재미있는 글"
                            :rows="10"
@@ -170,6 +201,60 @@
       <!--<b-btn type="submit" class="float-right" variant="primary">저장</b-btn>-->
       <!--</div>-->
     </b-modal>
+
+    <!-- comments 관련 [[ -->
+    <b-modal ref="mdAddCmt" hide-footer title="댓글 작성">
+      <b-form @submit="addComment">
+        <b-form-group label="이름:"
+                      label-for="f-a-c-id">
+          <b-form-input id="f-a-c-cid"
+                        type="text"
+                        v-model="formComment.id"
+                        required
+                        placeholder="홍길동">
+          </b-form-input>
+        </b-form-group>
+
+        <b-form-group label="글"
+                      label-for="f-a-c-contents">
+          <b-form-textarea id="f-a-c-contents"
+                           v-model="formComment.contents"
+                           placeholder="재미있는 글"
+                           :rows="10"
+                           :max-rows="20">
+          </b-form-textarea>
+        </b-form-group>
+
+        <b-btn type="submit" variant="primary" class="float-right">글 쓰기</b-btn>
+      </b-form>
+    </b-modal>
+
+    <b-modal ref="mdModCmt" hide-footer title="댓글 수정하기">
+      <b-form @submit="modifyComment">
+        <b-form-group label="이름:"
+                      label-for="comment-id">
+          <b-form-input id="comment-id"
+                        type="text"
+                        v-model="formComment.id"
+                        required
+                        placeholder="홍길동">
+          </b-form-input>
+        </b-form-group>
+
+        <b-form-group label="글"
+                      label-for="comment-contents">
+          <b-form-textarea id="comment-contents"
+                           v-model="formComment.contents"
+                           placeholder="재미있는 글"
+                           :rows="10"
+                           :max-rows="20">
+          </b-form-textarea>
+        </b-form-group>
+
+        <b-btn type="submit" variant="warning" class="float-right">글 수정</b-btn>
+      </b-form>
+    </b-modal>
+    <!-- comments 관련 ]] -->
   </div>
 </template>
 
@@ -241,6 +326,12 @@ export default {
         id: '',
         title: '',
         contents: ''
+      },
+      formComment: {
+        boardId: '',
+        _id: '',
+        id: '',
+        contents: ''
       }
     }
   },
@@ -283,19 +374,33 @@ export default {
         timer: 2000
       })
     },
-    mdAddOpen () {
+    addBoardModalOpen () {
       this.form._id = ''
       this.form.id = ''
       this.form.title = ''
       this.form.contents = ''
       this.$refs.mdAdd.show()
     },
-    mdModOpen (v) {
+    modifyBoardModalOpen (v) {
       this.form._id = v._id
       this.form.id = v.id
       this.form.title = v.title
       this.form.contents = v.contents
       this.$refs.mdMod.show()
+    },
+    addCommentModalOpen (v) {
+      this.formComment.boardId = v._id
+      this.formComment._id = ''
+      this.formComment.id = ''
+      this.formComment.contents = ''
+      this.$refs.mdAddCmt.show()
+    },
+    modifyCommentModalOpen (v) {
+      this.formComment.boardId = v._id
+      this.formComment._id = v._id
+      this.formComment.id = v.id
+      this.formComment.contents = v.contents
+      this.$refs.mdModCmt.show()
     },
     ago (t) {
       return this.$moment(t).fromNow()
@@ -355,6 +460,7 @@ export default {
           if (!res.data.success) throw new Error(res.data.msg)
           r.item.countOfView = res.data.d.countOfView
           r.item.contents = res.data.d.contents
+          r.item.commentIds = res.data.d.commentIds
           // console.log(res.data.d);
           // console.log(r.item);
           this.isBusy = false
@@ -441,6 +547,84 @@ export default {
         .catch((err) => {
           if (err.message) return this.swalError(err.message)
           this.swalWarning('글 삭제 취소')
+        })
+    },
+    addComment (evt) {
+      evt.preventDefault()
+      this.$axios.post('http://localhost:3000/api/comment', this.formComment)
+        .then((res) => {
+          if (!res.data.success) throw new Error(res.data.msg)
+          return this.swalSuccess('댓글 추가 완료')
+        })
+        .then(() => {
+          this.$refs.mdAddCmt.hide()
+          this.refresh()
+        })
+        .catch((err) => {
+          this.swalError(err.message)
+        })
+    },
+    modifyComment () {
+      this.$swal({
+        title: '댓글 수정 변경',
+        dangerMode: true,
+        buttons: {
+          cancel: {
+            text: '취소',
+            visible: true
+          },
+          confirm: {
+            text: '수정'
+          }
+        }
+      })
+        .then((res) => {
+          if (!res) throw new Error('')
+          return this.$axios.put('http://localhost:3000/api/comment', this.formComment)
+        })
+        .then((res) => {
+          if (!res.data.success) throw new Error(res.data.msg)
+          return this.swalSuccess('댓글 수정 완료')
+        })
+        .then(() => {
+          this.$refs.mdModCmt.hide()
+          this.refresh()
+        })
+        .catch((err) => {
+          if (err.message) this.swalError(err.message)
+          else this.swalWarning('댓글 수정 취소')
+        })
+    },
+    deleteComment (cmt) {
+      this.$swal({
+        title: '댓글 삭제',
+        dangerMode: true,
+        buttons: {
+          cancel: {
+            text: '취소',
+            visible: true
+          },
+          confirm: {
+            text: '삭제'
+          }
+        }
+      })
+        .then((res) => {
+          if (!res) throw new Error('')
+          return this.$axios.delete('http://localhost:3000/api/comment', {
+            params: { _id: cmt._id }
+          })
+        })
+        .then((res) => {
+          if (!res.data.success) throw new Error(res.data.msg)
+          return this.swalSuccess('댓글 삭제 완료')
+        })
+        .then(() => {
+          this.refresh()
+        })
+        .catch((err) => {
+          if (err.message) return this.swalError(err.message)
+          this.swalWarning('댓글 삭제 취소')
         })
     }
   }

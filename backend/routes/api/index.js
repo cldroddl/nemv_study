@@ -7,7 +7,7 @@ const createError = require('http-errors')
 // 미들웨어로 활용시에는 순서상 제일 위에 있어야 한다. 순차적으로 실행되므로
 router.all('*', (req, res, next) => {
   console.log('path: ' + req.path)
-  console.log('param: ' + req.params)
+  console.log('param: ' + JSON.stringify(req.params))
   // 미들웨어 처리
   // ...
   // 미들웨어 처리후 다른 처리를 해 줘야 하므로 next() 호출
@@ -18,7 +18,7 @@ router.use('/test', require('./test'))
 router.use('/companies', require('./companies'))
 router.use('/groups', require('./groups'))
 router.use('/board', require('./board'))
-
+router.use('/comment', require('./comment'))
 /*
  * res.send 는 응답을 json이나 문자열로 보내는 것인고
  * res.render 는 pug 페이지를 그리는 것이다.
