@@ -51,7 +51,8 @@ exports.read = (req, res) => {
   Board.findOneAndUpdate(f, s, o)
     // .where('_id').equals(_id)
     // .select('contents')
-    .populate('commentIds') // populate 이므로 전체 내용이 나온다.
+    // populate 이므로 변수명은 commentIds 이지만 comment 객체 배열이 들어 온다.
+    .populate('commentIds')
     .then(d => {
       res.send({ success: true, d: d })
     })
