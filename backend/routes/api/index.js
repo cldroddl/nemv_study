@@ -6,6 +6,7 @@ const createError = require('http-errors')
 // 아래처럼 제일 위에 두고 미들웨어로 활용할 수도 있다.
 // 미들웨어로 활용시에는 순서상 제일 위에 있어야 한다. 순차적으로 실행되므로
 router.all('*', (req, res, next) => {
+  console.log('header: ' + JSON.stringify(req.headers))
   console.log('path: ' + req.path)
   console.log('param: ' + JSON.stringify(req.params))
   // 미들웨어 처리

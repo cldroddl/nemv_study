@@ -36,6 +36,8 @@ moment.locale('ko')
 Vue.prototype.$moment = moment
 Vue.prototype.$swal = swal
 Vue.prototype.$fam = fam
+// 전역으로 모든 요청에 Authorization 에 값을 넣어서 보내는 걸로 설정
+axios.defaults.headers.common.Authorization = 'abcd'
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
