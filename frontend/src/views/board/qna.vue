@@ -606,7 +606,7 @@ export default {
           this.$refs.mdModCmt.hide()
           // 부드러운 화면 처리 위해 refresh 주석 처리 및 코드 추가
           // this.refresh()
-          this.rowComment.id = this.formComment.id;
+          this.rowComment.id = this.formComment.id
           this.rowComment.contents = this.formComment.contents
           this.rowComment.updateAt = new Date()
         })
