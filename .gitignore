@@ -102,4 +102,19 @@ dist
 
 # TernJS port file
 .tern-port
-backend/bin/www
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# frontend 의 build 결과물을 복사해서 사용할 예정이므로 public 폴더는 ignore에 추가
+public/
+
+# 설정파일 추가
+/backend/config/config.js

@@ -1,151 +1,75 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="container">
+    <h1>Bootstrap starter template</h1>
+    <p class="lead">
+      <a>Use this document</a> as a way to quickly start any new project.<br/>
+      All you get is this text and a mostly barebones HTML document.
+    </p>
+    <div class="row">
+      <div class="card" style="width: 18rem; text-anchor: middle;">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg"
+             preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#868e96"></rect>
+          <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+        </svg>
+        <div class="card-body">
+          <h5 class="card-title">About</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="/about" class="btn btn-primary">about</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="" class="card-img-top" alt="Card Image">
+        <div class="card-body">
+          <h5 class="card-title">flex</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="/flex" class="btn btn-primary">flex</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="" class="card-img-top" alt="Card Image">
+        <div class="card-body">
+          <h5 class="card-title">LESS Menu</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="/lessmenu" class="btn btn-primary">LESS Menu</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <!-- template 에서는 오히려 ~@ 이것은 먹히질 않고 @ 나 ../assets/ 로 해야 정상 동작하네 -->
+        <img src="@/assets/images/p_images/slider_01.jpg" class="card-img-top" alt="Card Image">
+        <div class="card-body">
+          <h5 class="card-title">Flex2</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="/flex2" class="btn btn-primary">Flex2</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <!-- template 에서는 오히려 ~@ 이것은 먹히질 않고 @ 나 ../assets/ 로 해야 정상 동작하네 -->
+        <img src="@/assets/images/p_images/gallery_01.jpg" class="card-img-top" alt="Card Image">
+        <div class="card-body">
+          <h5 class="card-title">nemv</h5>
+          <p class="card-text">nemv study</p>
+          <a href="/nemv" class="btn btn-primary">nemv</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-
-  data: () => ({
-    ecosystem: [
-      {
-        text: 'vuetify-loader',
-        href: 'https://github.com/vuetifyjs/vuetify-loader'
-      },
-      {
-        text: 'github',
-        href: 'https://github.com/vuetifyjs/vuetify'
-      },
-      {
-        text: 'awesome-vuetify',
-        href: 'https://github.com/vuetifyjs/awesome-vuetify'
-      }
-    ],
-    importantLinks: [
-      {
-        text: 'Documentation',
-        href: 'https://vuetifyjs.com'
-      },
-      {
-        text: 'Chat',
-        href: 'https://community.vuetifyjs.com'
-      },
-      {
-        text: 'Made with Vuetify',
-        href: 'https://madewithvuejs.com/vuetify'
-      },
-      {
-        text: 'Twitter',
-        href: 'https://twitter.com/vuetifyjs'
-      },
-      {
-        text: 'Articles',
-        href: 'https://medium.com/vuetify'
-      }
-    ],
-    whatsNext: [
-      {
-        text: 'Explore components',
-        href: 'https://vuetifyjs.com/components/api-explorer'
-      },
-      {
-        text: 'Select a layout',
-        href: 'https://vuetifyjs.com/layout/pre-defined'
-      },
-      {
-        text: 'Frequently Asked Questions',
-        href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
-      }
-    ]
-  })
+  props: {
+    msg: String
+  }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
