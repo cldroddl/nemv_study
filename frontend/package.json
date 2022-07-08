@@ -14,7 +14,7 @@
     "fontawesome-markers": "^4.6.1",
     "joi": "^17.4.2",
     "jquery": "^3.5.1",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "sweetalert": "^2.1.2",
     "vue": "^2.6.11",
     "vue-awesome": "^4.1.0",
