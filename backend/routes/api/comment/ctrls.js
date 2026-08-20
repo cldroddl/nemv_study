@@ -34,15 +34,16 @@ exports.add = (req, res) => {
 }
 
 exports.mod = (req, res) => {
-  const set = req.body
+  const { _id, id, contents } = req.body
 
-  if (!Object.keys(set).length) return res.send({ success: false, msg: 'body not set' })
-  if (!set._id) return res.send({ success: false, msg: 'id not exists' })
+  if (!_id) return res.send({ success: false, msg: 'id not exists' })
 
-  set.updateAt = new Date()
-  set.ip = req.ip
+  // 수정 가능한 필드만 명시적으로 허용 (boardId 등은 별도 API로만 변경)
+  const set = { updateAt: new Date(), ip: req.ip }
+  if (id !== undefined) set.id = id
+  if (contents !== undefined) set.contents = contents
 
-  const f = { _id: set._id }
+  const f = { _id: _id }
   const s = { $set: set }
   Comment.findOneAndUpdate(f, s)
     .then(() => {

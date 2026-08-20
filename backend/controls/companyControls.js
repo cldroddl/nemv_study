@@ -85,12 +85,16 @@ exports.add = (req, res) => {
 exports.mod = (req, res) => {
   // res.send({success: false, msg: 'mod is not yet'})
   /* 페이징 고려 */
-  const set = req.body
-  if (!Object.keys(set).length) return res.send({success: false, msg: 'body not set'})
-  if (!set._id) return res.send({success: false, msg: 'id not set'})
-  set.update_at = new Date()
+  const { _id, name, remark, pos } = req.body
+  if (!_id) return res.send({success: false, msg: 'id not set'})
 
-  const f = { _id: set._id }
+  // 수정 가능한 필드만 명시적으로 허용 (group_ids 등은 별도 API로만 변경)
+  const set = { update_at: new Date() }
+  if (name !== undefined) set.name = name
+  if (remark !== undefined) set.remark = remark
+  if (pos !== undefined) set.pos = pos
+
+  const f = { _id: _id }
   const s = { $set: set }
   // 데이터 업데이트 후 그 데이터 넘겨주는 것은 playGround 참조
   // 3번째 인자 options 으로 { new: true } 넘겨주면 된다.
