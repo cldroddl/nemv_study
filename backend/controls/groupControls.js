@@ -72,10 +72,14 @@ exports.add = (req, res) => {
 
 exports.mod = (req, res) => {
   // res.send({success: false, msg: 'mod is not yet'})
-  const set = req.body;
-  if (!Object.keys(set).length) return res.send({ success: false, msg: 'body not set' });
-  if (!set._id) return res.send({ success: false, msg: 'id not exitst' });
-  const f = { _id: set._id };
+  const { _id, name } = req.body;
+  if (!_id) return res.send({ success: false, msg: 'id not exitst' });
+
+  // 수정 가능한 필드만 명시적으로 허용 (company_id 등은 별도 API로만 변경)
+  const set = {};
+  if (name !== undefined) set.name = name;
+
+  const f = { _id: _id };
   const s = { $set: set };
   Group.findOneAndUpdate(f, s)
     .then((r) => {

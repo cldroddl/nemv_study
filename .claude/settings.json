@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | { read -r f; case \"$f\" in *frontend/src/*.vue|*frontend/src/*.js) cd \"$CLAUDE_PROJECT_DIR/frontend\" && node_modules/.bin/vue-cli-service lint \"${f#*frontend/}\" --fix --no-clean ;; esac; } 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

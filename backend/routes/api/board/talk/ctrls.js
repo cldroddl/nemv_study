@@ -95,14 +95,17 @@ exports.add = (req, res) => {
 };
 
 exports.mod = (req, res) => {
-  const set = req.body;
+  const { _id, id, title, contents } = req.body;
 
-  if (!Object.keys(set).length) return res.send({ success: false, msg: 'body not set' });
-  if (!set._id) return res.send({ success: false, msg: 'id not exists' });
-  set.updateAt = new Date();
-  set.ip = req.ip;
+  if (!_id) return res.send({ success: false, msg: 'id not exists' });
 
-  const f = { _id: set._id };
+  // 수정 가능한 필드만 명시적으로 허용 (countOfView, commentIds 등은 별도 API로만 변경)
+  const set = { updateAt: new Date(), ip: req.ip };
+  if (id !== undefined) set.id = id;
+  if (title !== undefined) set.title = title;
+  if (contents !== undefined) set.contents = contents;
+
+  const f = { _id: _id };
   const s = { $set: set };
 
   Talk.findOneAndUpdate(f, s)
@@ -165,14 +168,16 @@ exports.addCmt = (req, res) => {
 };
 
 exports.modCmt = (req, res) => {
-  const set = req.body;
+  const { _id, id, contents } = req.body;
 
-  if (!Object.keys(set).length) return res.send({ success: false, msg: 'body not set' });
-  if (!set._id) return res.send({ success: false, msg: 'id not exists' });
-  set.updateAt = new Date();
-  set.ip = req.ip;
+  if (!_id) return res.send({ success: false, msg: 'id not exists' });
 
-  const f = { _id: set._id };
+  // 수정 가능한 필드만 명시적으로 허용 (boardId 등은 별도 API로만 변경)
+  const set = { updateAt: new Date(), ip: req.ip };
+  if (id !== undefined) set.id = id;
+  if (contents !== undefined) set.contents = contents;
+
+  const f = { _id: _id };
   const s = { $set: set };
   // 부드러운 화면 위해
   const o = { new: true };
