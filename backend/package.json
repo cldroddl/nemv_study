@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "jest"
   },
   "dependencies": {
     "connect-history-api-fallback": "^1.6.0",
@@ -20,6 +21,11 @@
   "resolutions": {
     "path-to-regexp": "0.1.13",
     "qs": "^6.14.2",
-    "bson": "^1.1.4"
+    "mongoose/@types/mongodb/bson": "1.1.6"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "mongodb-memory-server": "^10.4.3",
+    "supertest": "^7.2.2"
   }
 }

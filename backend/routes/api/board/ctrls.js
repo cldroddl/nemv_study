@@ -65,8 +65,8 @@ exports.add = (req, res) => {
   const { id, title, contents } = req.body
   console.log(req.body)
 
-  if (!id) res.send({ success: false, msg: 'id not exists' })
-  if (!contents) res.send({ success: false, msg: 'contents not exists'})
+  if (!id) return res.send({ success: false, msg: 'id not exists' })
+  if (!contents) return res.send({ success: false, msg: 'contents not exists'})
 
   const bd = new Board({
     id: id,

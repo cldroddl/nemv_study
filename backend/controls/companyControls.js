@@ -71,7 +71,7 @@ exports.add = (req, res) => {
    */
   /* 페이징 고려 */
   const { name } = req.body
-  if (!name) res.send({success: false, msg: 'name is not exists'})
+  if (!name) return res.send({success: false, msg: 'name is not exists'})
   const company = new Company({name: name})
   company.save()
     .then(() => {
