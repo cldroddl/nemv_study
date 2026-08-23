@@ -8,8 +8,8 @@ exports.list = (req, res) => {
 exports.add = (req, res) => {
   const { boardId, id, contents } = req.body
 
-  if (!id) res.send({ success: false, msg: 'id not exists' })
-  if (!contents) res.send({ success: false, msg: 'contents not exists' })
+  if (!id) return res.send({ success: false, msg: 'id not exists' })
+  if (!contents) return res.send({ success: false, msg: 'contents not exists' })
 
   const comments = new Comment({
     boardId: boardId,

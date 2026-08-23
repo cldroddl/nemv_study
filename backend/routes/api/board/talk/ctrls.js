@@ -76,8 +76,8 @@ exports.read = (req, res) => {
 exports.add = (req, res) => {
   const { id, title, contents } = req.body;
 
-  if (!id) res.send({success: false, msg : 'id not exists'});
-  if (!contents) res.send({success: false, msg : 'contents not exists'});
+  if (!id) return res.send({success: false, msg : 'id not exists'});
+  if (!contents) return res.send({success: false, msg : 'contents not exists'});
 
   const bd = new Talk({
     id: id,
@@ -141,8 +141,8 @@ exports.del = (req, res) => {
 exports.addCmt = (req, res) => {
   const { boardId, id,  contents } = req.body;
 
-  if (!id) res.send({ success: false, msg : 'id not exists' });
-  if (!contents) res.send({ success: false, msg : 'contents not exists' });
+  if (!id) return res.send({ success: false, msg : 'id not exists' });
+  if (!contents) return res.send({ success: false, msg : 'contents not exists' });
 
   const cmt = new TalkComment({
     boardId: boardId,
